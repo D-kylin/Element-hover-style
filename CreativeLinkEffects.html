@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CreativeLinkEffects</title>
+	<style type="text/scss">
+		/* section background-color */
+		$color-1: #435a6b;
+		$color-2: #0e83cd;
+		$color-3: #f19f0f;
+		$color-4: #3fa46a;
+		$color-5: #cd4436;
+		$color-6: #ecf0f1;
+		$color-7: #9e487f;
+
+		body {
+			margin: 0;
+			padding: 0;
+			font-size: 15px;
+			font-family: 'Raleway', sans-serif;
+		}
+		.container {
+			box-sizing: border-box;
+			margin: 0 auto;
+			background-color: rgba(0, 0, 0, 0.05);
+			header {
+				min-height: 250px;
+				text-align: center;
+				padding: 2em;
+				h1 {
+					font-size: 2.625em;
+					line-height: 1.3;
+					font-weight: normal;
+					color: #89867e;
+					span {
+						font-size: 60%;
+						color: #ceccc6;
+						display: block;
+					}
+				}
+				p {
+					font-size: 1em;
+					font-weight: 500;
+					text-align: center;
+					color: #89867e;
+				}
+			}
+
+			section {
+				margin: 0 auto;
+				padding: 10em 3em;
+				text-align: center;
+				nav {
+					text-align: center;
+					display: flex;
+					flex-flow: row wrap;
+					justify-content: center;
+					align-items: center;
+					a {
+						font-size: 1.75em;
+						font-weight: 400;
+						color: #fff;
+						outline: none;
+						letter-spacing: 1px;
+						text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+						text-decoration: none;
+						text-transform: uppercase;
+						margin: 15px 25px;
+						position: relative;
+					}
+				}
+			}
+
+			.color-1 {
+				background-color: $color-1;
+				a {
+					&::before {
+						display: inline-block;
+						content: "[";
+						margin-right: -10px;
+						opacity: 0;
+						transition: all .3s;
+					}
+					&::after {
+						display: inline-block;
+						content: "]";
+						margin-left: -10px;
+						opacity: 0;
+						transition: all .3s;	
+					}
+					&:hover::before {
+						opacity: 1;
+						transform: translateX(-20px);
+					}
+					&:hover::after {
+						opacity: 1;
+						transform: translateX(20px);
+					}
+				}
+			}
+
+			.color-2 {
+				background-color: $color-2;
+				a {					
+					span {
+						padding: 10px 14px;
+						display: inline-block;
+						background-color: #2195de;
+						position: relative;
+						transform-style: preserve-3d;
+						transition: transform .3s;
+						transform-origin: 50% 0;
+						&::before {
+							content: attr(data-hover);
+							padding: 10px 14px;
+							background-color: #0965a0;
+							position: absolute;
+							left: 0;
+							top: 100%;
+							transform-origin: 50% 0;
+							transform: rotateX(-90deg);
+						}
+						&:hover {
+							transform: rotateX(90deg);
+						}
+						&:hover::before {
+							background-color: #2195de;
+						}
+
+					}
+				}
+			}
+
+			.color-3 {
+				background-color: $color-3;
+				a {	
+					position: relative;
+					padding-bottom: 8px;
+					&::before {
+						content: " ";
+						width: 100%;
+						height: 4px;
+						background-color: rgba(0, 0, 0, .2);
+						position: absolute;
+						left: 0;
+						top: 100%;
+						opacity: 0;
+						transform: translateY(5px);
+						transition: all .3s;
+					}
+					&:hover::before {
+						opacity: 1;
+						transform: translateY(0);
+					}
+				}
+			}
+
+			.color-4 {
+				background-color: $color-4;
+				a {
+					height: 1em;
+					overflow: hidden;
+					padding: 0 4px;
+					span {
+						display: inline-block;
+						position: relative;
+						transition: transform .3s;
+						&::before {
+							content: attr(data-hover);
+							position: absolute;
+							top: 100%;
+							font-weight: 700;
+						}
+						&:hover {
+							transform: translateY(-100%);
+						}
+					}
+				}
+			}
+
+			.color-5 {
+				background-color: $color-5;
+				a {	
+					display: inline-block;
+					height: 100%;
+					margin: 0 10px;
+					padding: 10px 14px;
+					&::before {
+						content: " ";
+						width: 2px;
+						height: 0%;
+						position: absolute;
+						top: 0;
+						left: 0;
+						background-color: #fff;
+						transition: height .3s;
+					}
+					&::after {
+						content: " ";
+						width: 100%;
+						height: 2px;
+						position: absolute;
+						color: black;
+						top: 0;
+						left: 0;
+						background-color: #fff;
+						transition: top .3s;
+					}
+					&:hover::before {
+						height: 100%;
+					}
+					&:hover::after {
+						top: 100%;
+					}	
+				}
+			}
+
+			.color-6 {
+				background-color: $color-6;
+				a {
+					padding: 12px 10px 10px 10px;
+					color: #566473;
+					font-weight: 600;
+					position: relative;
+					&::before {
+						content: " ";
+						width: 100%;
+						height: 3px;
+						background-color: #566473;
+						position: absolute;
+						top: 100%;
+						left: 0;
+						transform: scale(0.85);
+						transition: all .3s;
+					}
+					&::after {
+						content: " ";
+						width: 100%;
+						height: 3px;
+						background-color: #566473;
+						position: absolute;
+						top: 100%;
+						left: 0;
+						transform: scale(0.85);
+						transition: transform .3s;
+					}
+					&:hover::before {
+						top: 0;
+						transform: scale(1);
+					}
+					&:hover::after {
+						transform: scale(1);
+					}
+				}
+			}
+
+			.color-7 {
+				background-color: $color-7;
+				a {
+					span {
+						padding: 10px 12px;
+						display: inline-block;
+						border: 3px solid #354856;
+						position: relative;
+						&::before {
+							content: " ";
+							width: 100%;
+							height: 100%;
+							border: 3px solid #fff;
+							position: absolute;
+							left: -3px;
+							top: -3px;
+							transform: translateX(6px) translateY(-7px);
+							opacity: 0;
+							transition: all .3s;
+						}
+						&:hover::before {
+							opacity: 1;
+							transform: translateX(0) translateY(0);
+						}
+
+					}
+				}
+			}
+
+			.color-8 {
+				background-color: $color-1;
+				a {
+					padding: 18px 20px;
+					margin: 0 20px;
+					position: relative;
+					span {
+						display: block;
+						&:last-child {
+							font-size: 0.75em;
+							font-style: italic;
+							text-transform: none;
+							padding: 10px 0 0 0;
+							opacity: 0;
+							transform: translateY(-10px);
+							transition: all .3s;
+						}
+					}
+					&::before {
+						content: " ";
+						width: 100%;
+						height: 1px;
+						background-color: #fff;
+						position: absolute;
+						left: 0;
+						top: 0;
+						transition: height .3s;
+					}
+					&::after {
+						content: "";
+						width: 100%;
+						height: 1px;
+						background-color: #fff;
+						position: absolute;
+						left: 0;
+						bottom: 0;
+						opacity: 0;
+						transform: translateY(-8px);
+						transition: all .3s;
+					}
+					&:hover::before {
+						height: 5px;
+					}
+					&:hover::after {
+						opacity: 1;
+						transform: translateY(0);
+					}
+					&:hover span:last-child {
+						opacity: 1;
+						transform: translateY(0);
+					}
+				}
+			}
+
+			.color-9 {
+				background-color: $color-4;
+				a {
+					position: relative;
+					overflow: hidden;
+					&::before {
+						content: attr(data-hover);
+						position: absolute;
+						left: 0;
+						top: 0;
+						padding: 10px 20px;
+						color: black;
+						background-color: #fff;
+						transform: translateX(-25%);
+						transition: transform .3s;
+					}
+					span {
+						position: relative;
+						display: block;
+						padding: 10px 20px;
+						background-color: #0f7c67;
+						transform: translateX(0);
+						transition: transform .3s;
+					}
+					&:hover span {
+						transform: translateX(100%);
+					}
+					&:hover::before {
+						transform: translateX(0);
+					}
+				}
+			}
+
+			.color-10 {
+				background-color: $color-2;
+				a {
+					padding: 10px 0;
+					color: #0974bc;
+					border-top: 2px solid #0974bc;
+					position: relative;
+					font-weight: 700;
+					&::before {
+						content: attr(data-hover);
+						overflow: hidden;
+						padding: 10px 0;
+						color: #fff;
+						border-bottom: 2px solid #fff;
+						position: absolute;
+						left: 0;
+						top: 0;
+						max-width: 0;
+						transition: all .3s;
+					}
+					&:hover::before {
+						max-width: 100%;
+					}
+				}
+			}
+
+			.color-11 {
+				background-color: $color-5;
+				a {
+					position: relative;
+					&::before {
+						content: " ";
+						box-sizing: border-box;
+						width: 100px;
+						height: 100px;
+						border: 2px solid rgba(0,0,0,0.1);
+						border-radius: 50%;
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						transform: translateX(-50%) translateY(-50%) scale(0.8);
+						opacity: 0;
+						transition: transform .3s, opacity .3s;
+					}
+					&::after {
+						content: " ";
+						box-sizing: border-box;
+						width: 90px;
+						height: 90px;
+						border: 5px solid rgba(0,0,0,0.1);
+						border-radius: 50%;
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						transform: translateX(-50%) translateY(-50%) scale(0.6);
+						opacity: 0;
+						transition: transform .3s, opacity .3s;
+					}
+					&:hover::before,
+					&:hover::after {
+						transform: translateX(-50%) translateY(-50%) scale(1);
+						opacity: 1;
+					}
+
+				}
+			}
+
+			.color-12 {
+				background-color: $color-3;
+				a {
+					position: relative;
+					transition: color .3s;
+					&::before {
+						content: ".";
+						color: #fff;
+						position: absolute;
+						left: 50%;
+						bottom: -50%;
+						transform: translateX(-50%) scale(1.5);
+						text-shadow: 0 0 transparent, 0 0 transparent;
+						opacity: 0;
+						transition: text-shadow .3s, opacity .3s;
+					}
+					&:hover {
+						color: rgba(0, 0, 0, .8);
+					}
+					&:hover::before {
+						text-shadow: 8px 0 0 #fff, -8px 0 0 #fff;
+						opacity: 1;
+					}
+				}
+			}
+
+			.color-13 {
+				background-color: $color-2;
+				a {
+					position: relative;
+					padding: 0 20px;
+					height: 45px;
+					line-height: 45px;
+					&::before {
+						content: " ";
+						width: 45px;
+						height: 2px;
+						background-color: #fff;
+						position: absolute;
+						top: 0;
+						left: 0;
+						transform-origin: 0 0;
+						transform: rotate(90deg);
+						opacity: 0.2;
+						transition: all .3s;
+					}
+					&::after {
+						content: " ";
+						width: 45px;
+						height: 2px;
+						background-color: #fff;
+						position: absolute;
+						bottom: 0;
+						right: 0;
+						transform-origin: 100% 0;
+						transform: rotate(90deg);
+						opacity: 0.2;
+						transition: all .3s;
+					}
+					&:hover::before {
+						left: 50%;
+						transform: rotate(0) translateX(-50%);
+						opacity: 1;
+					}
+					&:hover::after {
+						right: 50%;
+						transform: rotate(0) translateX(50%);
+						opacity: 1;
+					}
+				}
+			}
+
+			.color-14 {
+				background-color: $color-1;
+				a {
+					color: #6f8686;
+					position: relative;
+					&::before {
+						content: attr(data-hover);
+						color: #fff;
+						position: absolute;
+						transform-origin: 100% center;
+						transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+						opacity: 0;
+						transition: all .3s;
+					}
+					&:hover::before {
+						transform: scale(1) rotate(0);
+						opacity: 1;
+					}
+				}
+			}
+
+			.color-15 {
+				background-color: $color-5;
+				a {
+					box-sizing: border-box;
+					padding: 10px 14px;
+					background-color: #e35041;
+					box-shadow: inset 0 3px #b15041;
+					position: relative;
+					transition: background-color .4s;
+					&::before {
+						content: attr(data-hover);
+						color: $color-5;
+						padding: 10px 14px;
+						background-color: #fff;
+						position: absolute;
+						top: 0;
+						left: 0;
+						perspective: 300px;
+						transform-style: preserve-3d;
+						/* backface-visibility: hidden; */
+						transform-origin: 50% 0;
+						transform: rotateX(-270deg);
+						transition: transform .7s;
+					}
+					&:hover {
+						background-color: #b15041;
+					}
+					&:hover::before {
+						transform: rotateX(0);
+					}
+				}
+			}
+
+			.color-16 {
+				background-color: $color-2;
+				color: #fff;
+				font-size: 3.8em;
+				font-style: italic;
+				padding: 1em;
+			}			
+		}
+
+			
+	</style>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>
+				Creative Link Effects
+				<span>
+					Subtle and modern effects for links or menu items
+				</span>
+			</h1>
+			<p>
+				Please note that not every browser supports transitions on pseudo elements.
+			</p>
+		</header>
+		<section class="color-1">
+			<nav class="cl-effect-1">
+				<a href="#">WAFTURE</a>
+				<a href="#">SUMPTUOUS</a>
+				<a href="#">SCINTILLA</a>
+				<a href="#">PROPINQUITY</a>
+				<a href="#">HARBINGER</a>
+			</nav>
+		</section>
+		<section class="color-2">
+			<nav class="cl-effect-2">
+				<a href="#">
+					<span data-hover="RATATOUILLE">RATATOUILLE</span>
+				</a>
+				<a href="#">
+					<span data-hover="LASSITUDE">LASSITUDE</span>
+				</a>
+				<a href="#">
+					<span data-hover="MURMUROUS">MURMUROUS</span>
+				</a>
+				<a href="#">
+					<span data-hover="PALIMPSEST">PALIMPSEST</span>
+				</a>
+				<a href="#">
+					<span data-hover="ASSEMBLAG">ASSEMBLAG</span>
+				</a>
+			</nav>
+		</section>
+		<section class="color-3">
+			<nav class="cl-effect-3">
+				<a href="#">PALIMPSEST</a>
+				<a href="#">INEFFABLE</a>
+				<a href="#">LILT</a>
+				<a href="#">MELLIFLUOUS</a>
+				<a href="#">SERENDIPITY</a>
+			</nav>
+		</section>
+		<section class="color-4">
+			<nav class="cl-effect-4">
+				<a href="#">
+					<span data-hover="SERAGLIO">SERAGLIO</span>
+				</a>
+				<a href="#">
+					<span data-hover="SUMPTUOUS">SUMPTUOUS</span>
+				</a>
+				<a href="#">
+					<span data-hover="SCINTILLA">SCINTILLA</span>
+				</a>
+				<a href="#">
+					<span data-hover="PALIMPSEST">PALIMPSEST</span>
+				</a>
+				<a href="#">
+					<span data-hover="ASSEMBLAGE">ASSEMBLAGE</span>
+				</a>
+			</nav>
+		</section>
+		<section class="color-5">
+			<nav class="cl-effect-5">
+				<a href="#" data-hover="UMBRELLA">UMBRELLA</a>
+				<a href="#" data-hover="INEFFABLE">INEFFABLE</a>
+				<a href="#" data-hover="LILT">LILT</a>
+				<a href="#" data-hover="MELLIFLUOUS">MELLIFLUOUS</a>
+				<a href="#" data-hover="SERENDIPITY">SERENDIPITY</a>
+			</nav>
+		</section>
+		<section class="color-6">
+			<nav class="cl-effect-6">
+				<a href="#">LANGUOR</a>
+				<a href="#">LASSITUDE</a>
+				<a href="#">MURMUROUS</a>
+				<a href="#">PALIMPSEST</a>
+				<a href="#">ASSEMBLAGE</a>
+			</nav>
+		</section>
+		<section class="color-7">
+			<nav class="cl-effect-7">
+				<a href="#">
+					<span>IMBUE</span>
+				</a>
+				<a href="#">
+					<span>SUMPTUOUS</span>
+				</a>
+				<a href="#">
+					<span>SCINTILLA</span>
+				</a>
+				<a href="#">
+					<span>PROPINQUITY</span>
+				</a>
+				<a href="#">
+					<span>HARBINGER</span>
+				</a>
+			</nav>
+		</section>
+		<section class="color-8">
+			<nav class="cl-effect-8">
+				<a href="#">
+					<span>GOSSAMER</span>
+					<span>Sumptuous Heart</span>
+				</a>
+				<a href="#">
+					<span>INEFFABLE</span>
+					<span>Evanescent Life</span>
+				</a>
+				<a href="#">
+					<span>CHATOYANT</span>
+					<span>Assemblage Love</span>
+				</a>
+				<a href="#">
+					<span>MELLIFLUOUS</span>
+					<span>Mellifluous Wil</span>
+				</a>
+				<a href="#">
+					<span>SERENDIPITY</span>
+					<span>Serendipity Cut</span>
+				</a>				
+			</nav>
+		</section>
+		<section class="color-9">
+			<nav class="cl-effect-9">
+				<a href="#" data-hover="SERAGLIO">
+					<span data-hover="SERAGLIO">SERAGLIO</span>
+				</a> 
+				<a href="#" data-hover="SUMPTUOUS">
+					<span data-hover="SUMPTUOUS">SUMPTUOUS</span>
+				</a> 
+				<a href="#" data-hover="SCINTILLA">
+					<span data-hover="SCINTILLA">SCINTILLA</span>
+				</a>
+				<a href="#" data-hover="PALIMPSEST">
+					<span data-hover="PALIMPSEST">PALIMPSEST</span>
+				</a> 
+				<a href="#" data-hover="ASSEMBLAGE">
+					<span data-hover="ASSEMBLAGE">ASSEMBLAGE</span>
+				</a>
+			</nav>
+		</section>
+		<section class="color-10">
+			<nav class="cl-effect-10">
+				<a href="#" data-hover="DESULTORY">DESULTORY</a>
+				<a href="#" data-hover="SUMPTUOUS">SUMPTUOUS</a>
+				<a href="#" data-hover="SCINTILLA">SCINTILLA</a>
+				<a href="#" data-hover="PROPINQUITY">PROPINQUITY</a>
+				<a href="#" data-hover="HARBINGER">HARBINGER</a>
+			</nav>
+		</section>
+		<section class="color-11">
+			<nav class="cl-effect-11">
+				<a href="#">CHATOYANT</a>
+				<a href="#">INEFFABLE</a>
+				<a href="#">EFFICIENCY</a>
+				<a href="#">MELLIFLUOUS</a>
+				<a href="#">SERENDIPITY</a>
+			</nav>
+		</section>
+		<section class="color-12">
+			<nav class="cl-effect-12">
+				<a href="#">BELEAGUER</a>
+				<a href="#">LASSITUDE</a>
+				<a href="#">MURMUROUS</a>
+				<a href="#">PALIMPSEST</a>
+				<a href="#">ASSEMBLAGE</a>
+			</nav>
+		</section>
+		<section class="color-13">
+			<nav class="cl-effect-13">
+				<a href="#">AILUROPHILE</a>
+				<a href="#">SUMPTUOUS</a>
+				<a href="#">SCINTILLA</a>
+				<a href="#">PROPINQUITY</a>
+				<a href="#">HARBINGER</a>
+			</nav>
+		</section>
+		<section class="color-14">
+			<nav class="cl-effect-14">
+				<a href="#" data-hover="LANGUOR">LANGUOR</a>
+				<a href="#" data-hover="MURMUROUS">MURMUROUS</a>
+				<a href="#" data-hover="LASSITUDE">LASSITUDE</a>
+				<a href="#" data-hover="CHATOYANT">CHATOYANT</a>
+				<a href="#" data-hover="PALIMPSEST">PALIMPSEST</a>
+			</nav>
+		</section>
+		<section class="color-15">
+			<nav class="cl-effect-15">
+				<a href="#" data-hover="BELEAGUER">BELEAGUER</a>
+				<a href="#" data-hover="SCINTILLA">SCINTILLA</a>
+				<a href="#" data-hover="CHATOYANT">CHATOYANT</a>
+				<a href="#" data-hover="PALIMPSEST">PALIMPSEST</a>
+				<a href="#" data-hover="LANGUOR">LANGUOR</a>
+			</nav>
+		</section>
+		<section class="color-16">
+			<nav class="cl-effect-16">
+				<p>
+					The End!
+				</p>
+			</nav>
+		</section>
+	</div>
+</body>
+<script type="text/javascript" src="sass.link.min.js"></script>
+</html>
